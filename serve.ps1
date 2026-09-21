@@ -17,7 +17,7 @@ while ($listener.IsListening) {
   $res = $ctx.Response
   try {
     $path = [System.Uri]::UnescapeDataString($req.Url.AbsolutePath)
-    if ($path -eq "/") { $path = "/index.html" }
+    if ($path.EndsWith("/")) { $path = $path + "index.html" }
     $full = Join-Path $root ($path.TrimStart("/"))
     $full = [System.IO.Path]::GetFullPath($full)
     if (-not $full.StartsWith([System.IO.Path]::GetFullPath($root))) {

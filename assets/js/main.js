@@ -8,7 +8,26 @@
     initScrollSpy();
     initReveal();
     initLightbox();
+    initInPageAnchors();
   });
+
+  // Same-page # links (bottom section nav, skip link, etc.) normally push a
+  // history entry per click, so the browser Back button steps back through
+  // sections instead of leaving the page. Scroll manually and swap the hash
+  // in place with replaceState so Back always exits to the previous page.
+  function initInPageAnchors() {
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      const id = a.getAttribute("href").slice(1);
+      if (!id) return;
+      a.addEventListener("click", (e) => {
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", "#" + id);
+      });
+    });
+  }
 
   function initScrollSpy() {
     if (!("IntersectionObserver" in window)) return;
