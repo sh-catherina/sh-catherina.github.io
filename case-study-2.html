@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introducing a New Service in an Employee App — Ekaterina Sharipova</title>
+<meta name="description" content="Case study: adapting a desktop service-monitoring tool into an incident-first mobile experience inside an employee app.">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introducing a New Service in an Employee App">
+<meta property="og:description" content="Owned the end-to-end UX for bringing a critical monitoring service to mobile — a focused flow employees could rely on during time-sensitive incidents.">
+<meta property="og:image" content="assets/img/case2-cover-desktop.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=18">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Bottom-floating pill nav — fixed, same at every breakpoint -->
+<nav class="case-bottom-nav" aria-label="Section navigation">
+  <ol>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#constraints">Constraints</a></li>
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#tradeoffs">Trade-offs</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#outcome">Outcome</a></li>
+    <li><a href="#future">Future</a></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <div class="wrap case-hero">
+    <a class="case-back" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
+      All work
+    </a>
+    <h1 class="case-title reveal">Introducing a New Service in an Employee App</h1>
+
+    <figure class="case-cover reveal">
+      <img src="assets/img/case2-cover-desktop.jpg" alt="Mobile Product Health Dashboard flow: a monitored-products overview drilling into per-service availability, then into a single GraphQL API metric's chart, across three connected phone screens." width="1600" height="672">
+    </figure>
+  </div>
+
+  <div class="wrap case-layout">
+    <div class="case-content">
+
+      <section class="case-section" id="overview">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Project overview</h2>
+          <div class="case-section-body reveal">
+            <dl class="role-scope-grid">
+              <div>
+                <dt>My role</dt>
+                <dd>Sole Product Designer</dd>
+              </div>
+              <div>
+                <dt>Scope</dt>
+                <dd>End-to-end UX design for adapting a desktop monitoring experience to mobile.</dd>
+              </div>
+              <div>
+                <dt>Key challenge</dt>
+                <dd>Enable engineers to access critical service health information during time-sensitive situations without disrupting the existing desktop workflow.</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>530 users adopted the feature in the first month — approximately 13% of the app's monthly active users.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="context">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Context</h2>
+          <div class="case-section-body reveal">
+            <p>The company had an internal service monitoring tool used to track product availability and system health. It was accessible only via a desktop web interface, which limited access during off-hours and incident situations.</p>
+            <p>With growing focus on reliability and incident readiness, there was a need to make critical service health data available on mobile devices.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="problem">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Problem</h2>
+          <div class="case-section-body reveal">
+            <p>The main challenge was enabling engineers to detect service degradation as early as possible during time-critical situations, without compromising consistency with the existing monitoring system.</p>
+            <p>During critical incidents outside working hours, engineers had to rely on a laptop and VPN to access service health data, adding friction and slowing down response time.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="constraints">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Constraints</h2>
+          <div class="case-section-body reveal">
+            <p>The web version remained the single source of truth, so metric naming and backend structure could not be changed.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="approach">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">My approach</h2>
+          <div class="case-section-body reveal">
+            <p>I analysed existing monitoring workflows with an analyst and identified two key usage modes:</p>
+
+            <ul class="list-check">
+              <li><strong>Normal monitoring</strong> — users check service health as part of their regular workflow.</li>
+              <li><strong>Incident response</strong> — users need to quickly understand whether a service is degraded and what requires attention.</li>
+            </ul>
+
+            <p>Based on these two modes, I defined mobile as an <strong>incident-first experience</strong>, rather than a full replica of the web product.</p>
+            <p>I designed and validated wireframes and high-fidelity prototypes with stakeholders before development.</p>
+          </div>
+        </div>
+
+        <!-- single device mockup — kept centered rather than full-bleed, stretching it would distort a single phone frame -->
+        <figure class="figure figure-round-lg figure-fit-viewport reveal">
+          <img src="assets/img/case2-main-eng.jpg" alt="Employee app Home screen with a Product Health Dashboard card surfacing Vacation Planning, ITSM, and Inventory Management System availability." loading="lazy">
+          <figcaption>The Product Health Dashboard surfaces directly from the employee app's Home screen.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section" id="tradeoffs">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Key design trade-offs</h2>
+          <div class="case-section-body reveal">
+            <p>The web version's metric names were technical and not always self-explanatory, but since it remained the single source of truth, renaming them on mobile would have broken consistency between platforms — so I kept them as they were.</p>
+            <p>Instead, I addressed usability through structure rather than naming: the app opens on a simple, color-coded status overview, and the original detailed metrics only surface one level down, for whoever needs to dig in. This matched the incident-first approach — checked quickly during an active incident rather than read end-to-end like the desktop dashboard — and meant mobile didn't have to reproduce the desktop screen's density to stay consistent with it.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="solution">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">The solution</h2>
+          <div class="case-section-body reveal">
+            <p>Delivered a mobile monitoring experience that provides:</p>
+            <ul class="list-check">
+              <li>Instant access to service health status</li>
+              <li>Scannable overview with color-coded statuses optimized for incident response</li>
+              <li>Consistent interpretation of metrics across web and mobile</li>
+              <li>Reduced dependency on desktop access</li>
+            </ul>
+            <p><strong>Two entry points</strong></p>
+          </div>
+        </div>
+
+        <figure class="figure figure-full reveal">
+          <img src="assets/img/case2-app-1.jpg" alt="Employee app Home screen showing the Product Health Dashboard widget, next to the Services screen showing the Product Health tile in the Operations group." loading="lazy">
+          <figcaption>Product Health is reachable from two places: the Home screen widget, and the Product Health tile in the Services menu.</figcaption>
+        </figure>
+
+        <div class="case-row">
+          <span class="case-section-label" aria-hidden="true"></span>
+          <div class="case-section-body reveal">
+            <p><strong>Service overview page</strong></p>
+          </div>
+        </div>
+
+        <figure class="figure figure-full reveal">
+          <img src="assets/img/case2-app-2.jpg" alt="Product Health Dashboard overview: an empty state prompting users to start monitoring, and a Monitored products list showing Vacation Planning, ITSM, and Inventory Management System with live availability percentages." loading="lazy">
+        </figure>
+
+        <div class="case-row">
+          <span class="case-section-label" aria-hidden="true"></span>
+          <div class="case-section-body reveal">
+            <p><strong>Product availability drill-down flow</strong></p>
+          </div>
+        </div>
+
+        <figure class="figure figure-full reveal">
+          <img src="assets/img/case2-app-3.jpg" alt="Drill-down flow from the Vacation Planning availability breakdown into Public, Integration, and GraphQL API metrics, ending on a single metric's detailed SLI chart." loading="lazy">
+        </figure>
+      </section>
+
+      <section class="case-section" id="outcome">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Outcome</h2>
+          <div class="case-section-body reveal">
+            <div class="metric-row">
+              <div class="metric">
+                <p class="metric-value">530</p>
+                <p class="metric-label">users in the first month</p>
+              </div>
+              <div class="metric">
+                <p class="metric-value">~13%</p>
+                <p class="metric-label">of the app's monthly active users</p>
+              </div>
+            </div>
+
+            <ul class="list-check" style="margin-top:2.5rem;">
+              <li>Extended a desktop-only monitoring experience to mobile, enabling product teams to access service health metrics during incidents and outside working hours.</li>
+              <li>Enabled engineers to detect service degradation before incidents were created, allowing earlier response to emerging issues.</li>
+              <li>Established a mobile entry point for operational monitoring without disrupting the existing desktop workflow.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="future">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Future Improvements</h2>
+          <div class="case-section-body reveal">
+            <p>As the product evolves, I'd explore more flexible customization of the home screen widget, allowing users to prioritize and organize the services most relevant to them. This would better support users responsible for larger service portfolios while keeping the default experience simple for the primary audience.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="wrap case-nav-footer">
+    <a href="index.html" class="btn btn-ghost reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
+      Home
+    </a>
+    <a href="case-study-1.html" class="btn btn-primary reveal">
+      Next case study
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/components.js?v=3"></script>
+<script src="assets/js/main.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simplifying On-call Planning in an ITSM System — Ekaterina Sharipova</title>
+<meta name="description" content="Case study: end-to-end redesign of on-call scheduling for an enterprise ITSM platform, spanning 11 time zones and multiple support roles.">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simplifying On-call Planning in an ITSM System">
+<meta property="og:description" content="Redesigned the on-call planning flow in a 4-month sprint — keeping the calendar view teams already relied on and simplifying everything around it.">
+<meta property="og:image" content="assets/img/case1-cover-desktop.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=18">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Bottom-floating pill nav — fixed, same at every breakpoint -->
+<nav class="case-bottom-nav" aria-label="Section navigation">
+  <ol>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#users">Users</a></li>
+    <li><a href="#role">Role</a></li>
+    <li><a href="#challenges">Challenges</a></li>
+    <li><a href="#decisions">Key decisions</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#outcome">Outcome</a></li>
+    <li><a href="#future">Future</a></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <div class="wrap case-hero">
+    <a class="case-back" href="index.html#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
+      All work
+    </a>
+    <h1 class="case-title reveal">Simplifying On-call Planning in an ITSM System</h1>
+
+    <figure class="case-cover reveal">
+      <img src="assets/img/case1-cover-desktop.jpg" alt="On-call scheduling in the ITSM platform: a support-group list and a monthly coverage calendar with per-person shift assignments, shown across tablet and laptop screens." width="1600" height="672">
+    </figure>
+  </div>
+
+  <div class="wrap case-layout">
+    <div class="case-content">
+
+      <section class="case-section" id="overview">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Project overview</h2>
+          <div class="case-section-body reveal">
+            <dl class="role-scope-grid">
+              <div>
+                <dt>My role</dt>
+                <dd>Sole Product Designer</dd>
+              </div>
+              <div>
+                <dt>Scope</dt>
+                <dd>End-to-end redesign of on-call scheduling, integrated into an enterprise ITSM platform.</dd>
+              </div>
+              <div>
+                <dt>Key challenge</dt>
+                <dd>Migrating a mature scheduling workflow used across 11 time zones without disrupting familiar team habits.</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>NSAT rose from 69% to 75%, and monthly active users grew 51% after launch.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="context">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Context</h2>
+          <div class="case-section-body reveal">
+            <p>Our ITSM platform was used by support teams to manage incidents and operational workflows. However, on-call scheduling still lived in a separate legacy product, creating a fragmented experience across tools. The goal was to bring scheduling into the ITSM platform while preserving familiar workflows for existing users.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="problem">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Problem</h2>
+          <div class="case-section-body reveal">
+            <p>The legacy scheduling tool was widely adopted but difficult to maintain and increasingly disconnected from the broader ITSM ecosystem. Users had to switch between systems to manage related operational tasks, and the scheduling experience had accumulated unnecessary complexity over time.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="users">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Users</h2>
+          <div class="case-section-body reveal">
+            <p>The scheduling system was used by support engineers, incident coordinators, and support team leads, with different responsibilities and permissions across roles.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="role">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">My Role</h2>
+          <div class="case-section-body reveal">
+            <p>Sole product designer responsible for end-to-end redesign and integration of a legacy on-call scheduling workflow into an enterprise ITSM system, working under strict functional parity and system constraints.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="challenges">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Design Challenges</h2>
+          <div class="case-section-body reveal">
+            <ul class="list-check">
+              <li>Preserving familiar workflows while integrating scheduling into the ITSM platform</li>
+              <li>Supporting multiple user roles with different permissions and responsibilities</li>
+              <li>Maintaining functional parity with the legacy system while reducing unnecessary complexity</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="decisions">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Key Design Decisions</h2>
+          <div class="case-section-body reveal">
+            <h3 class="case-subhead">01 — Multi-timezone scheduling</h3>
+            <p>Support engineers were distributed across 11 time zones. The key design question was whether schedules should be displayed in each user's local time or in a single shared time zone.</p>
+            <p>We introduced Group Local Time as a single source of truth. I designed the interface to keep this context consistently visible, helping teams coordinate shifts without time zone ambiguity.</p>
+
+            <h3 class="case-subhead">02 — Seamless migration</h3>
+            <p>Migrating a mature workflow from a legacy system to the ITSM platform required minimizing both technical and cognitive disruption.</p>
+            <p>Although Gantt-based scheduling is common in similar products, user research showed that existing teams were comfortable with the current scheduling model. Rather than introducing a familiar industry pattern, we preserved users' mental model and focused on simplifying the existing workflow.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="process">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Process</h2>
+          <div class="case-section-body reveal">
+            <h3 class="case-subhead">01 — Understand existing workflows</h3>
+            <p>Interviewed support teams to understand how schedules were created, maintained, and validated. Identified pain points and opportunities for simplification while preserving familiar workflows.</p>
+
+            <h3 class="case-subhead">02 — Validate concepts</h3>
+            <p>Iterated on design solutions with users and stakeholders. Released incrementally and refined the experience based on feedback.</p>
+          </div>
+        </div>
+
+        <figure class="figure figure-full reveal">
+          <img src="assets/img/case1-group-local-time.jpg" alt="An early version of the on-call schedule for the Product Reliability Support Group, with Group local time displayed above a December coverage calendar." loading="lazy">
+          <figcaption>One of the earliest versions of the schedule view, refined through several rounds of feedback before release.</figcaption>
+        </figure>
+
+        <div class="case-row">
+          <span class="case-section-label" aria-hidden="true"></span>
+          <div class="case-section-body reveal">
+            <h3 class="case-subhead" style="margin-top:0;">03 — Ship under a hard deadline</h3>
+            <p>The project had roughly 4 months for research, design, validation, and development. To hit the release date, I worked directly with backend engineers throughout the design process — several interaction decisions shaped the data structure they were building in parallel, so we made those calls together rather than handing off a finished spec. The MVP shipped on time; less critical customization features followed in a calmer second phase after launch.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="solution">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Solution</h2>
+          <div class="case-section-body reveal">
+            <p>The new scheduling module became part of the existing ITSM platform.</p>
+            <p>Key improvements included:</p>
+            <ul class="list-check">
+              <li>Simplified scheduling and editing flows</li>
+              <li>Removal of outdated and rarely used functionality</li>
+              <li>New customization capabilities</li>
+              <li>Improved visibility of schedules and team coverage</li>
+              <li>Consistent UX aligned with the rest of the platform</li>
+            </ul>
+          </div>
+        </div>
+
+        <figure class="figure figure-full reveal">
+          <img src="assets/img/case1-group-list.jpg" alt="On-call groups list in the ITSM platform, showing group IDs, contact information, and each group's currently active on-call members." width="1800" height="1012" loading="lazy">
+          <figcaption>Users find and open their team's schedule from a single groups list.</figcaption>
+        </figure>
+
+        <figure class="figure figure-full reveal">
+          <img src="assets/img/case1-group-final.jpg" alt="Final on-call schedule view for the Product Reliability Support Group, with group contact information, today's primary escalation contact, group lead, an active-on-call filter, and an editable coverage calendar." loading="lazy">
+          <figcaption>The shipped schedule view: group contacts, today's escalation contact, and the full coverage calendar in one place.</figcaption>
+        </figure>
+
+        <figure class="figure figure-full reveal">
+          <img src="assets/img/case1-mass-editing.gif" alt="Demonstration of the simplified mass-editing flow for updating multiple on-call shifts at once." loading="lazy">
+          <figcaption>Simplified mass-editing: updating coverage across multiple days no longer requires repeating the same steps one by one.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section" id="outcome">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Outcome</h2>
+          <div class="case-section-body reveal">
+            <p>The redesigned experience was successfully adopted by support teams across the organization.</p>
+
+            <h3 class="case-subhead">Results</h3>
+            <div class="metric-row">
+              <div class="metric">
+                <p class="metric-value">+6 points</p>
+                <p class="metric-detail">69% <span class="arrow">→</span> 75%</p>
+                <p class="metric-label">NSAT</p>
+              </div>
+              <div class="metric">
+                <p class="metric-value">+51%</p>
+                <p class="metric-detail">2,987 <span class="arrow">→</span> 4,500</p>
+                <p class="metric-label">MAU</p>
+              </div>
+            </div>
+
+            <ul class="list-check" style="margin-top:2.5rem;">
+              <li>Positive user feedback highlighted improved usability</li>
+              <li>Additional teams adopted the scheduling module after launch</li>
+              <li>Improved consistency between scheduling and incident management workflows</li>
+            </ul>
+
+            <p class="note-caveat">Note: metrics reflect platform-level analytics rather than the scheduling module in isolation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="future">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Future Improvements</h2>
+          <div class="case-section-body reveal">
+            <p>As the product evolved, the team header accumulated additional functionality, increasing information density. In a future iteration, I'd simplify the header to keep the schedule visible without scrolling on smaller laptop screens.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="wrap case-nav-footer">
+    <a href="index.html" class="btn btn-ghost reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
+      Home
+    </a>
+    <a href="case-study-2.html" class="btn btn-primary reveal">
+      Next case study
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/components.js?v=3"></script>
+<script src="assets/js/main.js?v=4"></script>
+</body>
+</html>

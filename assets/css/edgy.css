@@ -1,0 +1,195 @@
+/* =========================================================
+   EKATERINA SHARIPOVA — DRAFT v3
+   Plain, editorial, monochrome — no panels or pill buttons.
+   Hairline rules separate sections and list items throughout,
+   modeled on nickclement.com's layout, jasonwalker.io's hero
+   typography, and ayurchenko.xyz's experience row.
+   ========================================================= */
+
+:root {
+  --paper: #ffffff;
+  --panel: #f2f2f3;        /* image placeholder fill only */
+  --panel-strong: #e6e6e8; /* hairline dividers, avatar placeholder */
+  --ink: #101012;
+  --ink-soft: #3a3a3f;
+  --muted: #68686f;
+
+  --radius-md: 14px;
+
+  --font: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --container: 1240px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* , *::before, *::after { box-sizing: border-box; }
+html { background: var(--paper); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--font); font-weight: 400; line-height: 1.05; margin: 0; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--ink); color: var(--paper);
+  padding: 0.75em 1.25em; z-index: 200; font-size: 0.9rem;
+}
+.skip-link:focus { left: var(--gutter); top: 12px; }
+
+.wrap-edgy {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---------- Top bar — plain, not sticky (jasonwalker.io layout) ---------- */
+.top-bar {
+  padding-top: clamp(20px, 3vw, 32px);
+}
+.top-bar-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.top-bar-mark { display: block; flex-shrink: 0; }
+.top-bar-mark img {
+  display: block; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--panel-strong);
+  object-fit: cover;
+}
+
+.top-bar-actions { display: flex; align-items: center; gap: 1.5rem; }
+.top-bar-link { font-size: 0.95rem; font-weight: 600; color: var(--ink); transition: color 0.15s var(--ease); }
+.top-bar-link:hover { color: var(--muted); }
+
+/* ---------- Hero — name/role masthead + description, fills the first screen ---------- */
+.hero-panel {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+}
+.hero-mast { display: flex; flex-direction: column; line-height: 1; }
+.hero-name, .hero-role {
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.hero-name { color: var(--ink); }
+.hero-role { color: var(--muted); }
+
+.hero-lede {
+  max-width: 56ch;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+/* ---------- Section headings — small, muted labels (nickclement.com layout) ---------- */
+.section-block { padding-block: clamp(56px, 9vw, 104px); border-top: 1px solid var(--panel-strong); }
+.section-heading { font-size: 0.875rem; font-weight: 400; color: var(--muted); }
+
+/* ---------- Section row — label column left, content column right (nickclement.com layout) ---------- */
+.section-row { display: flex; align-items: flex-start; gap: clamp(1.5rem, 4vw, 3rem); }
+.section-row > .section-heading { flex: 0 0 auto; width: 180px; margin: 0; padding-top: 0.4rem; } /* nudges the label to align with the first line of content, which sits in a larger font */
+.section-row > *:last-child { flex: 1 1 0; min-width: 0; }
+
+@media (max-width: 760px) {
+  .section-row { flex-direction: column; gap: 1.25rem; }
+  .section-row > .section-heading { width: auto; padding-top: 0; }
+  .section-row > *:last-child { width: 100%; }
+  .xp-list { margin-top: 0; }
+}
+
+/* ---------- Featured work — single cover image + text, stacked (nickclement.com layout) ---------- */
+.case-card-list { display: flex; flex-direction: column; }
+.case-card { display: block; }
+.case-card-list > * + * { border-top: 1px solid var(--panel-strong); margin-top: clamp(2.75rem, 6vw, 4.5rem); padding-top: clamp(2.75rem, 6vw, 4.5rem); }
+
+.case-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  aspect-ratio: 3 / 2;
+  background: var(--panel);
+  cursor: pointer;
+  margin-bottom: 1.25rem;
+}
+.case-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+.case-card:hover .case-media img { transform: scale(1.03); }
+
+.case-body h3 { font-size: 1.0625rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+.case-desc { color: var(--ink-soft); }
+
+/* ---------- Explore strip — plain row, spacing comes from .case-card-list ---------- */
+.explore-strip {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;
+}
+.explore-strip-text { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.explore-strip-title { font-weight: 600; font-size: 1.0625rem; color: var(--ink); }
+.explore-strip-desc { color: var(--muted); font-size: 0.92rem; }
+.explore-strip-link { font-weight: 700; font-size: 0.95rem; color: var(--ink); flex-shrink: 0; transition: color 0.15s var(--ease); }
+.explore-strip:hover .explore-strip-link { color: var(--muted); }
+
+/* ---------- About ---------- */
+.about-copy p { color: var(--ink-soft); }
+.about-copy p + p { margin-top: 1.15em; }
+.about-copy p:first-child { font-weight: 700; color: var(--ink); font-size: 1.15rem; line-height: 1.5; }
+
+/* ---------- Experience — logo row, detail lives in the résumé (ayurchenko.xyz layout) ---------- */
+@media (min-width: 761px) {
+  .xp-list { margin-top: -1.75rem; } /* company name sits centered in the 40px logo tile with its own top padding — pull the list up so its text lines up with the section label */
+}
+.xp-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding-block: 1rem;
+}
+.xp-row + .xp-row { border-top: 1px solid var(--panel-strong); }
+
+.xp-company { display: flex; align-items: center; gap: 0.85rem; min-width: 0; }
+.xp-logo {
+  flex-shrink: 0;
+  width: 40px; height: 40px; border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--panel);
+  display: flex; align-items: center; justify-content: center;
+}
+.xp-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.xp-company-name { font-weight: 700; color: var(--ink); }
+
+.xp-role-dates { display: flex; flex-direction: column; align-items: flex-end; gap: 0.2rem; text-align: right; font-size: 0.92rem; }
+.xp-role { color: var(--ink); font-weight: 600; }
+.xp-dates { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+@media (max-width: 560px) {
+  .xp-row { align-items: flex-start; }
+  .xp-company-name { font-size: 0.95rem; }
+  .xp-role-dates { font-size: 0.85rem; }
+}
+
+/* ---------- Contacts — plain stacked text links (nickclement.com "Connect" layout) ---------- */
+.contact-links { display: flex; flex-direction: column; gap: 0.65rem; }
+.contact-link { font-size: 1.0625rem; font-weight: 400; color: var(--ink-soft); transition: color 0.15s var(--ease); }
+.contact-link:hover { color: var(--ink); }
+
+/* ---------- Footer (targets components.js-rendered markup) ---------- */
+.site-footer { border-top: 1px solid var(--panel-strong); padding-block: 1.75rem; margin-top: clamp(56px, 8vw, 96px); }
+.site-footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.site-footer-copy { font-size: 0.85rem; color: var(--muted); }
+.site-footer-top { display: inline-flex; align-items: center; gap: 0.5em; font-size: 0.85rem; font-weight: 400; color: var(--muted); transition: color 0.15s var(--ease); }
+.site-footer-top svg { width: 14px; height: 14px; }
+.site-footer-top:hover { color: var(--ink); }

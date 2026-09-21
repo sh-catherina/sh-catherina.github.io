@@ -1,0 +1,454 @@
+/* =========================================================
+   EKATERINA SHARIPOVA — PORTFOLIO
+   Case study pages only (case-study-1.html, case-study-2.html).
+   The homepage (index.html) uses assets/css/edgy.css instead.
+
+   Table of contents:
+   1. Tokens
+   2. Reset
+   3. Base / Typography
+   4. Layout utilities
+   6. Buttons & links
+   9. Metrics
+   11. Footer
+   12. Case study — hero, bottom nav, sections, figures, lightbox
+   13. Motion / reveal
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  --ink: #16161a;
+  --ink-soft: #3c3c42;
+  --muted: #63636b;
+  --paper: #ffffff;
+  --paper-alt: #f5f5f6;
+  --line: #e4e4e7;
+  --line-strong: #cfcfd4;
+  --focus: var(--ink);
+
+  --font-display: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+
+  --container: 1240px;
+  --gutter: clamp(20px, 5vw, 64px);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- 2. Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+input, select { font: inherit; }
+table { border-collapse: collapse; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ---------- 3. Base / Typography ---------- */
+html { background: var(--paper); }
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.1; letter-spacing: -0.015em; color: var(--ink); }
+
+p + p { margin-top: 1em; }
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75em 1.25em;
+  z-index: 200;
+  font-size: var(--fs-small);
+}
+.skip-link:focus {
+  left: var(--gutter);
+  top: 12px;
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- 4. Layout utilities ---------- */
+.wrap {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---------- 6. Buttons & links ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85em 1.5em;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+.btn svg { width: 15px; height: 15px; transition: transform 0.25s var(--ease); }
+.btn:hover svg { transform: translate(3px, -3px); }
+
+/* ---------- 9. Metrics ---------- */
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+.metric {
+  min-width: 0;
+}
+.metric .metric-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2vw + 1.3rem, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+  overflow-wrap: break-word;
+}
+.metric-value .arrow { color: var(--muted); font-weight: 400; margin-inline: 0.08em; }
+.metric-detail {
+  margin-top: 0.65rem;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.metric-detail .arrow { color: var(--muted); margin-inline: 0.08em; }
+.metric .metric-label {
+  margin-top: 0.4rem;
+  font-size: var(--fs-small);
+  color: var(--muted);
+  font-weight: 500;
+}
+/* ---------- 11. Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: 1.75rem;
+  margin-top: clamp(2rem, 6vw, 4rem);
+}
+.site-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-footer-copy {
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+.site-footer-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--muted);
+  transition: color 0.2s var(--ease);
+}
+.site-footer-top svg { width: 14px; height: 14px; transition: transform 0.25s var(--ease); }
+.site-footer-top:hover { color: var(--ink); }
+.site-footer-top:hover svg { transform: translateY(-2px); }
+
+/* ---------- 12. Case study ---------- */
+.case-hero {
+  padding-top: clamp(32px, 6vw, 64px);
+}
+.case-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.case-back:hover { color: var(--ink); }
+.case-back svg { width: 14px; height: 14px; }
+
+/* Same treatment as the homepage hero name/role */
+.case-title {
+  margin-top: 1.5rem;
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  max-width: 18ch;
+}
+.case-cover {
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 3px rgba(20, 20, 20, 0.05);
+}
+.case-cover img { width: 100%; }
+.case-cover.is-single {
+  display: flex;
+  justify-content: center;
+  padding: clamp(2rem, 7vw, 4.5rem) clamp(1rem, 5vw, 3rem);
+}
+.case-cover.is-single img {
+  width: auto;
+  max-width: 340px;
+  max-height: 65vh;
+  border-radius: 22px;
+}
+
+.case-layout {
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* Bottom-floating pill nav — fixed, always visible, solid fill (no glassmorphism) */
+.case-bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(16px, 3vw, 28px);
+  transform: translateX(-50%);
+  z-index: 150;
+  max-width: calc(100vw - 32px);
+  background: var(--ink);
+  border-radius: 999px;
+  box-shadow: 0 12px 32px rgba(22, 22, 26, 0.28);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.case-bottom-nav::-webkit-scrollbar { display: none; }
+.case-bottom-nav ol {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  white-space: nowrap;
+}
+/* Chrome/WebKit drop a scroll container's own trailing padding once scrolled
+   to the end — use a real flex item for the trailing gap instead, so it holds
+   whether the row is scrolled or short enough to need no scrolling at all. */
+.case-bottom-nav ol::after {
+  /* the flex `gap` already adds 0.25rem before this spacer, so it only needs to add the rest */
+  content: "";
+  flex: 0 0 0.25rem;
+}
+.case-bottom-nav a {
+  display: block;
+  padding: 0.5em 0.95em;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.62);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.case-bottom-nav a:hover { color: #fff; }
+.case-bottom-nav a.is-active { color: var(--ink); background: #fff; }
+
+/* Section label (left) + content (right) — same layout as the homepage's About/Experience/Contacts */
+.case-section {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 24px;
+}
+.case-row { display: flex; align-items: flex-start; gap: clamp(1.5rem, 4vw, 3rem); }
+.case-section-label {
+  flex: 0 0 auto;
+  width: 180px;
+  margin: 0;
+  padding-top: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  color: var(--muted);
+}
+.case-row > *:last-child { flex: 1 1 0; min-width: 0; }
+
+@media (max-width: 760px) {
+  .case-row { flex-direction: column; gap: 1.25rem; }
+  .case-section-label { width: auto; padding-top: 0; }
+  .case-row > *:last-child { width: 100%; }
+}
+
+.case-section-body { margin-top: 0; }
+.case-section-body > * + * { margin-top: 1.5rem; }
+.case-section-body p:where(:not([class])) { color: var(--ink-soft); max-width: 70ch; }
+
+.case-subhead {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-top: 2.5rem;
+}
+.case-subhead:first-child { margin-top: 0; }
+
+.figure { margin-block: 2rem; }
+.figure-full {
+  margin-inline: calc(var(--gutter) * -1);
+}
+.figure img, .figure video {
+  border-radius: 12px;
+  width: 100%;
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 3px rgba(20, 20, 20, 0.05);
+}
+.figure-round-lg img { border-radius: 28px; }
+.figure-fit-viewport img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 88vh;
+  margin-inline: auto;
+}
+.figure-fit-viewport figcaption {
+  text-align: center;
+  max-width: 46ch;
+  margin-inline: auto;
+}
+.figure-full img { border-radius: 14px; border: none; box-shadow: none; }
+.figure figcaption {
+  margin-top: 0.85rem;
+  font-size: var(--fs-small);
+  color: var(--muted);
+  padding-inline: 0;
+}
+.figure-full figcaption { padding-inline: var(--gutter); }
+
+.case-cover img,
+.case-content figure img {
+  cursor: zoom-in;
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 12, 14, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 5vw, 56px);
+  z-index: 300;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s var(--ease), visibility 0.25s;
+}
+.lightbox-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+.lightbox-close {
+  position: fixed;
+  top: clamp(12px, 3vw, 28px);
+  right: clamp(12px, 3vw, 28px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s var(--ease);
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.22); }
+.lightbox-close svg { width: 20px; height: 20px; }
+
+.list-check li {
+  position: relative;
+  padding-left: 1.6em;
+  color: var(--ink-soft);
+}
+.list-check li + li { margin-top: 0.65em; }
+.list-check li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.role-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 2.5rem;
+}
+@media (max-width: 560px) {
+  .role-scope-grid { grid-template-columns: 1fr; }
+}
+.role-scope-grid dt { font-family: var(--font-body); font-size: 1.0625rem; font-weight: 700; color: var(--ink); }
+.role-scope-grid dd { margin-top: 0.55rem; font-family: var(--font-body); font-size: 1.0625rem; color: var(--ink-soft); }
+
+.note-caveat {
+  margin-top: 1.5rem;
+  font-size: var(--fs-small);
+  font-style: italic;
+  color: var(--muted);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+}
+
+.case-nav-footer {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+}
+.case-nav-footer .btn-ghost:hover svg { transform: translate(-3px, -3px); }
+
+/* ---------- 13. Motion / reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
