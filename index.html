@@ -24,9 +24,10 @@
 <!-- Top bar — plain, not sticky, jasonwalker.io-style (mark left, links right) -->
 <header class="top-bar">
   <div class="wrap-edgy top-bar-row">
-    <a class="top-bar-mark" href="#top" aria-label="Ekaterina Sharipova — back to top">
-      <img src="assets/img/avatar.jpg" alt="" width="36" height="36">
-    </a>
+    <span class="top-bar-mark">
+      <img src="assets/img/avatar.jpg" alt="Ekaterina Sharipova" width="36" height="36">
+      <span class="top-bar-mark-emoji" aria-hidden="true">🌸</span>
+    </span>
     <nav class="top-bar-actions" aria-label="Primary">
       <a class="top-bar-link" href="#contacts">Contact</a>
       <a class="top-bar-link" href="https://drive.google.com/file/d/1kY8FwEwrzzVcaPMFJQIdGqYuqVuySqas/view?usp=drivesdk" target="_blank" rel="noopener">Resume</a>
@@ -39,8 +40,8 @@
   <!-- Hero — name/role masthead + description, jasonwalker.io-style -->
   <section class="hero-panel wrap-edgy">
     <div class="hero-mast">
-      <h1 class="hero-name">Ekaterina Sharipova</h1>
-      <span class="hero-role">Product designer</span>
+      <h1 class="hero-name" data-scramble>Ekaterina Sharipova</h1>
+      <span class="hero-role" data-scramble>Product designer</span>
     </div>
     <p class="hero-lede">4+ years of experience simplifying complex workflows through research, clear interaction logic, and thoughtful end-to-end design.</p>
   </section>
@@ -141,6 +142,6 @@
 <div id="site-footer"></div>
 
 <script src="assets/js/components.js?v=3"></script>
-<script src="assets/js/main.js?v=5"></script>
+<script src="assets/js/main.js?v=7"></script>
 </body>
 </html>

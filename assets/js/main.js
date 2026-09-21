@@ -9,7 +9,67 @@
     initReveal();
     initLightbox();
     initInPageAnchors();
+    initHeroScramble();
   });
+
+  // Hero intro: letters flicker through random glyphs, then lock into the
+  // real text left to right. Runs on any [data-scramble] element; only the
+  // homepage hero name/role opt in today.
+  function initHeroScramble() {
+    const targets = document.querySelectorAll("[data-scramble]");
+    if (!targets.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const LOWER = "abcdefghijklmnopqrstuvwxyz";
+    const randomLetterLike = (ch) => {
+      const pool = ch === ch.toUpperCase() ? UPPER : LOWER;
+      return pool[(Math.random() * pool.length) | 0];
+    };
+
+    const BASE_DELAY = 550; // ms before the first character is allowed to lock in
+    const CHAR_STAGGER = 55; // ms added per character position, left to right
+    const FLICKER_MS = 60; // how often an unlocked character re-randomizes
+    const LINE_STAGGER = 220; // ms delay before each subsequent target starts
+
+    targets.forEach((el, lineIndex) => {
+      const chars = el.textContent.split("");
+      const lastFlicker = new Array(chars.length).fill(-Infinity);
+      const current = chars.map((ch) => (ch === " " ? " " : randomLetterLike(ch)));
+      const lineDelay = lineIndex * LINE_STAGGER;
+      let start = null;
+
+      el.textContent = current.join("");
+
+      function frame(now) {
+        if (start === null) start = now;
+        const elapsed = now - start - lineDelay;
+        if (elapsed < 0) {
+          requestAnimationFrame(frame);
+          return;
+        }
+        let doneCount = 0;
+        for (let i = 0; i < chars.length; i++) {
+          const target = chars[i];
+          if (target === " ") {
+            doneCount++;
+            continue;
+          }
+          const lockAt = BASE_DELAY + i * CHAR_STAGGER;
+          if (elapsed >= lockAt) {
+            current[i] = target;
+            doneCount++;
+          } else if (elapsed - lastFlicker[i] >= FLICKER_MS) {
+            current[i] = randomLetterLike(target);
+            lastFlicker[i] = elapsed;
+          }
+        }
+        el.textContent = current.join("");
+        if (doneCount < chars.length) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+  }
 
   // Same-page # links (bottom section nav, skip link, etc.) normally push a
   // history entry per click, so the browser Back button steps back through
