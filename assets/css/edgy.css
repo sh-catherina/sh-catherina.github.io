@@ -137,6 +137,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- Featured work — single cover image + text, stacked (nickclement.com layout) ---------- */
+/* The marquee ends the list, so its gap to the divider below should match the
+   list's own item rhythm rather than the section's (larger) default padding. */
+#work { padding-bottom: clamp(2.75rem, 6vw, 4.5rem); }
 .case-card-list { display: flex; flex-direction: column; }
 .case-card { display: block; }
 .case-card-list > * + * { border-top: 1px solid var(--panel-strong); margin-top: clamp(2.75rem, 6vw, 4.5rem); padding-top: clamp(2.75rem, 6vw, 4.5rem); }
@@ -156,15 +159,36 @@ a { color: inherit; text-decoration: none; }
 .case-body h3 { font-size: 1.0625rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
 .case-desc { color: var(--ink-soft); }
 
-/* ---------- Explore strip — plain row, spacing comes from .case-card-list ---------- */
-.explore-strip {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;
+/* ---------- Explore marquee — looping ticker, spacing comes from .case-card-list ---------- */
+.explore-marquee {
+  display: block;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
-.explore-strip-text { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
-.explore-strip-title { font-weight: 600; font-size: 1.0625rem; color: var(--ink); }
-.explore-strip-desc { color: var(--muted); font-size: 0.92rem; }
-.explore-strip-link { font-weight: 700; font-size: 0.95rem; color: var(--ink); flex-shrink: 0; transition: color 0.15s var(--ease); }
-.explore-strip:hover .explore-strip-link { color: var(--muted); }
+.explore-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: explore-marquee-scroll 26s linear infinite;
+}
+.explore-marquee:hover .explore-marquee-track { animation-play-state: paused; }
+.explore-marquee-group { display: flex; flex-shrink: 0; }
+.explore-marquee-unit { display: flex; align-items: center; gap: 0.9em; flex-shrink: 0; padding-inline-end: 0.9em; }
+.explore-marquee-em {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.explore-marquee-icon { display: block; width: 1.05em; height: 1.05em; flex-shrink: 0; }
+
+@keyframes explore-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .explore-marquee-track { animation: none; }
+}
 
 /* ---------- About ---------- */
 .about-copy p { color: var(--ink-soft); }

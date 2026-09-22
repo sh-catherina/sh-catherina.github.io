@@ -188,7 +188,7 @@ p + p { margin-top: 1em; }
   align-items: center;
   gap: 0.5em;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--muted);
 }
 .case-back:hover { color: var(--ink); }
