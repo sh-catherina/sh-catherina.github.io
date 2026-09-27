@@ -3,20 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Introducing a New Service in an Employee App — Ekaterina Sharipova</title>
+<title>Launching a New Service in an Employee App — Ekaterina Sharipova</title>
 <meta name="description" content="Case study: adapting a desktop service-monitoring tool into an incident-first mobile experience inside an employee app.">
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="Introducing a New Service in an Employee App">
-<meta property="og:description" content="Owned the end-to-end UX for bringing a critical monitoring service to mobile — a focused flow employees could rely on during time-sensitive incidents.">
+<meta property="og:title" content="Launching a New Service in an Employee App">
+<meta property="og:description" content="I shaped a focused mobile experience for monitoring critical services during incidents — deciding what the mobile scenario needed to do rather than simply bringing the desktop experience to a smaller screen.">
 <meta property="og:image" content="/assets/img/case2-cover-desktop.jpg?v=2">
 <meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" hreflang="en" href="https://sh-catherina.github.io/product-health/">
+<link rel="alternate" hreflang="ru" href="https://sh-catherina.github.io/ru/product-health/">
+<link rel="alternate" hreflang="x-default" href="https://sh-catherina.github.io/product-health/">
 
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=30">
+<link rel="stylesheet" href="/assets/css/style.css?v=32">
 </head>
 <body id="top">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -43,7 +47,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
       All work
     </a>
-    <h1 class="case-title reveal">Introducing a New Service in an Employee App</h1>
+    <h1 class="case-title reveal">Launching a New Service in an Employee App</h1>
 
     <figure class="case-cover reveal">
       <img src="/assets/img/case2-cover-desktop.jpg?v=2" alt="Mobile Product Health Dashboard flow: a monitored-products overview drilling into per-service availability, then into a single GraphQL API metric's chart, across three connected phone screens." width="2160" height="900">
@@ -55,24 +59,24 @@
 
       <section class="case-section" id="overview">
         <div class="case-row">
-          <h2 class="case-section-label reveal">Project overview</h2>
+          <h2 class="case-section-label reveal">Project Overview</h2>
           <div class="case-section-body reveal">
             <dl class="role-scope-grid">
               <div>
-                <dt>My role</dt>
-                <dd>Sole Product Designer</dd>
+                <dt>Role</dt>
+                <dd>Sole product designer</dd>
               </div>
               <div>
                 <dt>Scope</dt>
-                <dd>End-to-end UX design for adapting a desktop monitoring experience to mobile.</dd>
+                <dd>End-to-end UX for bringing service monitoring to the employee mobile app.</dd>
               </div>
               <div>
                 <dt>Key challenge</dt>
-                <dd>Enable engineers to access critical service health information during time-sensitive situations without disrupting the existing desktop workflow.</dd>
+                <dd>Give engineers access to critical service health data during urgent situations without disrupting the existing desktop workflow.</dd>
               </div>
               <div>
-                <dt>Outcome</dt>
-                <dd>530 users adopted the feature in the first month — approximately 13% of the app's monthly active users.</dd>
+                <dt>Result</dt>
+                <dd>530 users in the first month, around 13% of the app’s monthly active users.</dd>
               </div>
             </dl>
           </div>
@@ -83,8 +87,8 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Context</h2>
           <div class="case-section-body reveal">
-            <p>The company had an internal service monitoring tool used to track product availability and system health. It was accessible only via a desktop web interface, which limited access during off-hours and incident situations.</p>
-            <p>With growing focus on reliability and incident readiness, there was a need to make critical service health data available on mobile devices.</p>
+            <p>The internal monitoring tool tracked product availability and system health, but was available only on desktop.</p>
+            <p>During incidents or after hours, engineers needed a laptop and VPN just to check critical service health.</p>
           </div>
         </div>
       </section>
@@ -93,8 +97,8 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Problem</h2>
           <div class="case-section-body reveal">
-            <p>The main challenge was enabling engineers to detect service degradation as early as possible during time-critical situations, without compromising consistency with the existing monitoring system.</p>
-            <p>During critical incidents outside working hours, engineers had to rely on a laptop and VPN to access service health data, adding friction and slowing down response time.</p>
+            <p>The goal was to make service health easier to check when engineers were away from their computers.</p>
+            <p>The challenge wasn’t to fit the desktop experience onto a smaller screen, but to understand what mobile was actually useful for.</p>
           </div>
         </div>
       </section>
@@ -103,24 +107,24 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Constraints</h2>
           <div class="case-section-body reveal">
-            <p>The web version remained the single source of truth, so metric naming and backend structure could not be changed.</p>
+            <p>The web version remained the source of truth, so metric names and the underlying backend structure could not be changed for mobile.</p>
           </div>
         </div>
       </section>
 
       <section class="case-section" id="approach">
         <div class="case-row">
-          <h2 class="case-section-label reveal">My approach</h2>
+          <h2 class="case-section-label reveal">My Approach</h2>
           <div class="case-section-body reveal">
-            <p>I analysed existing monitoring workflows with an analyst and identified two key usage modes:</p>
+            <p>Together with an analyst, I looked at the main monitoring scenarios and identified two modes:</p>
 
             <ul class="list-check">
-              <li><strong>Normal monitoring</strong> — users check service health as part of their regular workflow.</li>
-              <li><strong>Incident response</strong> — users need to quickly understand whether a service is degraded and what requires attention.</li>
+              <li><strong>Normal monitoring:</strong> checking service health as part of everyday work.</li>
+              <li><strong>Incident response:</strong> quickly understanding whether a service had degraded and what needed attention.</li>
             </ul>
 
-            <p>Based on these two modes, I defined mobile as an <strong>incident-first experience</strong>, rather than a full replica of the web product.</p>
-            <p>I designed and validated wireframes and high-fidelity prototypes with stakeholders before development.</p>
+            <p>Based on this, I designed the mobile experience primarily around incident response rather than trying to replicate the full desktop workflow.</p>
+            <p>I created wireframes and detailed prototypes and validated the direction with stakeholders before development.</p>
           </div>
         </div>
 
@@ -133,24 +137,33 @@
 
       <section class="case-section" id="tradeoffs">
         <div class="case-row">
-          <h2 class="case-section-label reveal">Key design trade-offs</h2>
+          <h2 class="case-section-label reveal">Key Design Trade-offs</h2>
           <div class="case-section-body reveal">
-            <p>The web version's metric names were technical and not always self-explanatory, but since it remained the single source of truth, renaming them on mobile would have broken consistency between platforms — so I kept them as they were.</p>
-            <p>Instead, I addressed usability through structure rather than naming: the app opens on a simple, color-coded status overview, and the original detailed metrics only surface one level down, for whoever needs to dig in. This matched the incident-first approach — checked quickly during an active incident rather than read end-to-end like the desktop dashboard — and meant mobile didn't have to reproduce the desktop screen's density to stay consistent with it.</p>
+            <h3 class="case-subhead">Technical Terminology</h3>
+            <p>The web version used technical metric names that were not always immediately clear.</p>
+            <p>Since the web experience remained the source of truth, I kept the same terminology on mobile and solved the usability issue through information hierarchy:</p>
+            <ul class="list-check">
+              <li>Simple service overview first</li>
+              <li>Detailed metrics one level deeper</li>
+            </ul>
+
+            <h3 class="case-subhead">Desktop Density</h3>
+            <p>The desktop dashboard was designed for detailed monitoring, while the mobile scenario was focused on quick checks.</p>
+            <p>I didn't try to preserve the same information density on mobile. Instead, the mobile experience prioritized the information needed to understand service health at a glance.</p>
           </div>
         </div>
       </section>
 
       <section class="case-section" id="solution">
         <div class="case-row">
-          <h2 class="case-section-label reveal">The solution</h2>
+          <h2 class="case-section-label reveal">Solution</h2>
           <div class="case-section-body reveal">
-            <p>Delivered a mobile monitoring experience that provides:</p>
+            <p>The mobile experience provided:</p>
             <ul class="list-check">
-              <li>Instant access to service health status</li>
-              <li>Scannable overview with color-coded statuses optimized for incident response</li>
-              <li>Consistent interpretation of metrics across web and mobile</li>
-              <li>Reduced dependency on desktop access</li>
+              <li>Instant access to service health</li>
+              <li>A clear status overview for quick incident checks</li>
+              <li>Consistent metric interpretation across web and mobile</li>
+              <li>Less dependence on a computer during incidents</li>
             </ul>
             <p><strong>Two entry points</strong></p>
           </div>
@@ -186,7 +199,7 @@
 
       <section class="case-section" id="outcome">
         <div class="case-row">
-          <h2 class="case-section-label reveal">Outcome</h2>
+          <h2 class="case-section-label reveal">Outcomes</h2>
           <div class="case-section-body reveal">
             <div class="metric-row">
               <div class="metric">
@@ -200,9 +213,9 @@
             </div>
 
             <ul class="list-check" style="margin-top:2.5rem;">
-              <li>Extended a desktop-only monitoring experience to mobile, enabling product teams to access service health metrics during incidents and outside working hours.</li>
-              <li>Enabled engineers to detect service degradation before incidents were created, allowing earlier response to emerging issues.</li>
-              <li>Established a mobile entry point for operational monitoring without disrupting the existing desktop workflow.</li>
+              <li>Service health monitoring became available on mobile instead of being desktop-only.</li>
+              <li>Product teams could check critical health metrics during incidents and after hours.</li>
+              <li>Mobile became an additional entry point into operational monitoring while the existing desktop workflow remained unchanged.</li>
             </ul>
           </div>
         </div>
@@ -212,7 +225,8 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Future Improvements</h2>
           <div class="case-section-body reveal">
-            <p>As the product evolves, I'd explore more flexible customization of the home screen widget, allowing users to prioritize and organize the services most relevant to them. This would better support users responsible for larger service portfolios while keeping the default experience simple for the primary audience.</p>
+            <p>I would explore more flexible home widget customization, allowing users to choose and order the services that matter most to them.</p>
+            <p>This could better support engineers responsible for many services while keeping the default experience simple for the main audience.</p>
           </div>
         </div>
       </section>
@@ -235,7 +249,7 @@
 
 <div id="site-footer"></div>
 
-<script src="/assets/js/components.js?v=3"></script>
-<script src="/assets/js/main.js?v=7"></script>
+<script src="/assets/js/components.js?v=4"></script>
+<script src="/assets/js/main.js?v=9"></script>
 </body>
 </html>

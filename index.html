@@ -8,15 +8,21 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ekaterina Sharipova — Product Designer">
-<meta property="og:description" content="4+ years of experience simplifying complex workflows through research, clear interaction logic, and thoughtful end-to-end design.">
+<meta property="og:description" content="I enjoy working from the problem up, exploring opportunities, shaping product concepts and designing experiences before the solution is fully defined.">
 <meta property="og:image" content="assets/img/social-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" hreflang="en" href="https://sh-catherina.github.io/">
+<link rel="alternate" hreflang="ru" href="https://sh-catherina.github.io/ru/">
+<link rel="alternate" hreflang="x-default" href="https://sh-catherina.github.io/">
+<!-- Visitor explicitly picked RU on an earlier visit — send them there before first paint -->
+<script>try{if(localStorage.getItem("lang")==="ru")location.replace("/ru/"+location.hash)}catch(e){}</script>
 
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/edgy.css?v=10">
+<link rel="stylesheet" href="assets/css/edgy.css?v=15">
 </head>
 <body id="top">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -31,6 +37,10 @@
     <nav class="top-bar-actions" aria-label="Primary">
       <a class="top-bar-link" href="#contacts">Contact</a>
       <a class="top-bar-link" href="https://drive.google.com/file/d/1knoPJHEYm0RjGhSRx5iTvptnx6iMHTI2/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+      <span class="lang-switch" role="group" aria-label="Language">
+        <a class="lang-switch-link" href="/" hreflang="en" data-lang="en" aria-current="true">EN</a>
+        <a class="lang-switch-link" href="/ru/" hreflang="ru" lang="ru" data-lang="ru">RU</a>
+      </span>
     </nav>
   </div>
 </header>
@@ -43,7 +53,7 @@
       <h1 class="hero-name" data-scramble>Ekaterina Sharipova</h1>
       <span class="hero-role" data-scramble>Product designer</span>
     </div>
-    <p class="hero-lede">4+ years of experience simplifying complex workflows through research, clear interaction logic, and thoughtful end-to-end design.</p>
+    <p class="hero-lede">I enjoy working from the problem up, exploring opportunities, shaping product concepts and designing experiences before the solution is fully defined.</p>
   </section>
 
   <!-- Featured work -->
@@ -57,7 +67,7 @@
         </div>
         <div class="case-body">
           <h3>Simplifying On-call Planning in an ITSM System</h3>
-          <p class="case-desc">Redesigned the on-call planning flow in a 4-month sprint. Research showed the existing calendar view already worked for support teams — so instead of reinventing it, I focused the redesign on simplifying everything around it.</p>
+          <p class="case-desc">Research showed that teams were already comfortable with their familiar planning model. Instead of replacing it with a new pattern, I explored what actually needed to change and simplified the experience around it.</p>
         </div>
       </a>
 
@@ -66,8 +76,8 @@
           <img src="assets/img/case2-cover-home.jpg" alt="Mobile Product Health Dashboard flow: a monitored-products overview drilling down into per-service availability and a single metric's chart, shown across three phone screens." loading="lazy" width="1800" height="1200">
         </div>
         <div class="case-body">
-          <h3>Introducing a New Service in an Employee App</h3>
-          <p class="case-desc">Owned the end-to-end UX for bringing a critical monitoring service to mobile — turning a dense desktop experience into a focused flow employees could rely on during time-sensitive incidents.</p>
+          <h3>Launching a New Service in an Employee App</h3>
+          <p class="case-desc">I shaped a focused mobile experience for monitoring critical services during incidents — deciding what the mobile scenario needed to do rather than simply bringing the desktop experience to a smaller screen.</p>
         </div>
       </a>
 
@@ -100,10 +110,11 @@
     <div class="section-row">
       <h2 class="section-heading">About</h2>
       <div class="about-copy">
-        <p>I joined a company as an intern for an unrelated role, but ended up designing an internal tool for our support team. That project hooked me, and for the 4+ years since, I've chosen to keep working on exactly this kind of problem: complex B2E SaaS and internal products.</p>
-        <p>What I enjoy most is having room to shape a product's direction, not just execute a spec. Early on, one of my projects didn't even have an analyst yet, so I filled that gap too — and for the first time, the work felt genuinely mine.</p>
-        <p>I'm also drawn to mentoring. I currently mentor a junior designer — helping her navigate practical constraints like edge cases and scalability, while she's pushed me to pay far more attention to visual polish in return. In my next role, I'd like to keep growing this side of my work alongside hands-on design.</p>
-        <p>Outside of work, I'm usually planning my next trip. I'm not a lie-on-the-beach traveler — I want to see how people live, learn the culture, and end up somewhere naturally stunning. My last trip, to Kamchatka, checked every box: volcanoes, river rafting, and boat trips to spot whales and orcas.</p>
+        <p><strong>Over the past 4+ years, I’ve worked on B2E SaaS and internal products, mostly around complex operational workflows.</strong> These projects taught me how to work with real constraints, understand different user needs, and turn complex problems into clear experiences.</p>
+        <p>What I enjoy most is working before the solution is obvious — understanding the problem, exploring opportunities, and shaping a clear product concept from an open-ended idea.</p>
+        <p>That’s the kind of work I want to do more of next, combining product thinking with hands-on design from the early stages through to the final interface.</p>
+        <p>I also enjoy mentoring. I currently mentor a junior designer, helping her navigate practical design challenges, edge cases, and scalability. She’s also taught me to look more critically at visual details and polish — something I’ve come to value more in my own work.</p>
+        <p>Outside of design, I love travelling — I’d rather see how people live and get out into nature than lie on a beach. My latest trip was to Kamchatka: volcanoes, rafting, and a boat out into the open ocean.</p>
       </div>
     </div>
   </section>
@@ -153,7 +164,7 @@
 
 <div id="site-footer"></div>
 
-<script src="assets/js/components.js?v=3"></script>
-<script src="assets/js/main.js?v=7"></script>
+<script src="assets/js/components.js?v=4"></script>
+<script src="assets/js/main.js?v=9"></script>
 </body>
 </html>

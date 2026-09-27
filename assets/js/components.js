@@ -9,11 +9,12 @@
     if (!target) return;
     target.classList.add("site-footer");
     const year = new Date().getFullYear();
+    const ru = document.documentElement.lang === "ru";
     target.innerHTML = `
       <div class="wrap site-footer-row">
-        <p class="site-footer-copy">© ${year} Ekaterina Sharipova</p>
+        <p class="site-footer-copy">© ${year} ${ru ? "Екатерина Шарипова" : "Ekaterina Sharipova"}</p>
         <a class="site-footer-top" href="#top">
-          Back to top
+          ${ru ? "Наверх" : "Back to top"}
           ${ICON_UP}
         </a>
       </div>

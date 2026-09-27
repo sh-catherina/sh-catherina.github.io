@@ -8,15 +8,19 @@
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="Simplifying On-call Planning in an ITSM System">
-<meta property="og:description" content="Redesigned the on-call planning flow in a 4-month sprint — keeping the calendar view teams already relied on and simplifying everything around it.">
+<meta property="og:description" content="Research showed that teams were already comfortable with their familiar planning model. Instead of replacing it with a new pattern, I explored what actually needed to change and simplified the experience around it.">
 <meta property="og:image" content="/assets/img/case1-cover-desktop.jpg?v=2">
 <meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" hreflang="en" href="https://sh-catherina.github.io/on-call/">
+<link rel="alternate" hreflang="ru" href="https://sh-catherina.github.io/ru/on-call/">
+<link rel="alternate" hreflang="x-default" href="https://sh-catherina.github.io/on-call/">
 
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=30">
+<link rel="stylesheet" href="/assets/css/style.css?v=32">
 </head>
 <body id="top">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -57,24 +61,24 @@
 
       <section class="case-section" id="overview">
         <div class="case-row">
-          <h2 class="case-section-label reveal">Project overview</h2>
+          <h2 class="case-section-label reveal">Project Overview</h2>
           <div class="case-section-body reveal">
             <dl class="role-scope-grid">
               <div>
-                <dt>My role</dt>
-                <dd>Sole Product Designer</dd>
+                <dt>Role</dt>
+                <dd>Sole product designer</dd>
               </div>
               <div>
                 <dt>Scope</dt>
-                <dd>End-to-end redesign of on-call scheduling, integrated into an enterprise ITSM platform.</dd>
+                <dd>Full redesign of on-call planning and its integration into the company’s ITSM platform.</dd>
               </div>
               <div>
                 <dt>Key challenge</dt>
-                <dd>Migrating a mature scheduling workflow used across 11 time zones without disrupting familiar team habits.</dd>
+                <dd>Move a mature planning workflow into ITSM without disrupting familiar team workflows.</dd>
               </div>
               <div>
-                <dt>Outcome</dt>
-                <dd>NSAT rose from 69% to 75%, and monthly active users grew 51% after launch.</dd>
+                <dt>Result</dt>
+                <dd>NSAT increased from 69% to 75%, while MAU grew from 2,987 to 4,500 after the rollout.</dd>
               </div>
             </dl>
           </div>
@@ -85,7 +89,8 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Context</h2>
           <div class="case-section-body reveal">
-            <p>Our ITSM platform was used by support teams to manage incidents and operational workflows. However, on-call scheduling still lived in a separate legacy product, creating a fragmented experience across tools. The goal was to bring scheduling into the ITSM platform while preserving familiar workflows for existing users.</p>
+            <p>Support teams used the ITSM platform for incident management, while on-call planning lived in a separate legacy product. Teams had to switch between systems to manage related workflows.</p>
+            <p>The goal was to bring planning into ITSM while keeping the experience familiar and easier to maintain.</p>
           </div>
         </div>
       </section>
@@ -94,7 +99,8 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Problem</h2>
           <div class="case-section-body reveal">
-            <p>The legacy scheduling tool was widely adopted but difficult to maintain and increasingly disconnected from the broader ITSM ecosystem. Users had to switch between systems to manage related operational tasks, and the scheduling experience had accumulated unnecessary complexity over time.</p>
+            <p>The existing planning tool was widely used, but had accumulated complexity over time.</p>
+            <p>Moving it into ITSM created an opportunity to simplify the experience — while preserving the parts of the workflow that already worked well for teams.</p>
           </div>
         </div>
       </section>
@@ -103,7 +109,8 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Users</h2>
           <div class="case-section-body reveal">
-            <p>The scheduling system was used by support engineers, incident coordinators, and support team leads, with different responsibilities and permissions across roles.</p>
+            <p>The main users were support engineers, incident coordinators, and support team leads.</p>
+            <p>They had different responsibilities and access levels, from creating schedules to checking coverage and managing changes.</p>
           </div>
         </div>
       </section>
@@ -112,7 +119,8 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">My Role</h2>
           <div class="case-section-body reveal">
-            <p>Sole product designer responsible for end-to-end redesign and integration of a legacy on-call scheduling workflow into an enterprise ITSM system, working under strict functional parity and system constraints.</p>
+            <p>I was the sole product designer on the project, working across research, interaction design, validation, and implementation.</p>
+            <p>I owned the redesign of on-call planning and its integration into the ITSM platform.</p>
           </div>
         </div>
       </section>
@@ -122,9 +130,9 @@
           <h2 class="case-section-label reveal">Design Challenges</h2>
           <div class="case-section-body reveal">
             <ul class="list-check">
-              <li>Preserving familiar workflows while integrating scheduling into the ITSM platform</li>
-              <li>Supporting multiple user roles with different permissions and responsibilities</li>
-              <li>Maintaining functional parity with the legacy system while reducing unnecessary complexity</li>
+              <li>Move an established workflow into ITSM without making familiar tasks harder.</li>
+              <li>Design for teams working across 11 time zones and different responsibilities.</li>
+              <li>Simplify the experience while preserving important functionality and flexibility.</li>
             </ul>
           </div>
         </div>
@@ -134,13 +142,13 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Key Design Decisions</h2>
           <div class="case-section-body reveal">
-            <h3 class="case-subhead">01 — Multi-timezone scheduling</h3>
-            <p>Support engineers were distributed across 11 time zones. The key design question was whether schedules should be displayed in each user's local time or in a single shared time zone.</p>
-            <p>We introduced Group Local Time as a single source of truth. I designed the interface to keep this context consistently visible, helping teams coordinate shifts without time zone ambiguity.</p>
+            <h3 class="case-subhead">Multi Time Zone</h3>
+            <p>Teams worked across 11 time zones, making time interpretation critical for planning.</p>
+            <p>The team decided to use Group Local Time as the single source of truth. My role was to make this context clear and consistently visible throughout the planning experience.</p>
 
-            <h3 class="case-subhead">02 — Seamless migration</h3>
-            <p>Migrating a mature workflow from a legacy system to the ITSM platform required minimizing both technical and cognitive disruption.</p>
-            <p>Although Gantt-based scheduling is common in similar products, user research showed that existing teams were comfortable with the current scheduling model. Rather than introducing a familiar industry pattern, we preserved users' mental model and focused on simplifying the existing workflow.</p>
+            <h3 class="case-subhead">Seamless Migration</h3>
+            <p>Research showed that teams were already comfortable with the existing calendar model.</p>
+            <p>Instead of introducing a new pattern such as a Gantt-style schedule, I kept the familiar planning model and focused on simplifying the experience around it.</p>
           </div>
         </div>
       </section>
@@ -149,11 +157,13 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Process</h2>
           <div class="case-section-body reveal">
-            <h3 class="case-subhead">01 — Understand existing workflows</h3>
-            <p>Interviewed support teams to understand how schedules were created, maintained, and validated. Identified pain points and opportunities for simplification while preserving familiar workflows.</p>
+            <h3 class="case-subhead">01 — Understand Existing Workflows</h3>
+            <p>I talked to support teams and explored how schedules were created, managed, and checked.</p>
+            <p>This helped identify pain points while separating them from patterns that were already working well.</p>
 
-            <h3 class="case-subhead">02 — Validate concepts</h3>
-            <p>Iterated on design solutions with users and stakeholders. Released incrementally and refined the experience based on feedback.</p>
+            <h3 class="case-subhead">02 — Validate Concepts</h3>
+            <p>I explored different ways of bringing planning into ITSM and iterated on the concepts with users and stakeholders.</p>
+            <p>The direction was refined through feedback before release.</p>
           </div>
         </div>
 
@@ -165,8 +175,10 @@
         <div class="case-row">
           <span class="case-section-label" aria-hidden="true"></span>
           <div class="case-section-body reveal">
-            <h3 class="case-subhead" style="margin-top:0;">03 — Ship under a hard deadline</h3>
-            <p>The project had roughly 4 months for research, design, validation, and development. To hit the release date, I worked directly with backend engineers throughout the design process — several interaction decisions shaped the data structure they were building in parallel, so we made those calls together rather than handing off a finished spec. The MVP shipped on time; less critical customization features followed in a calmer second phase after launch.</p>
+            <h3 class="case-subhead" style="margin-top:0;">03 — Ship Under a Hard Deadline</h3>
+            <p>The project had roughly four months for research, design, validation, and development.</p>
+            <p>I worked directly with backend developers while the data structure was being built in parallel. Together, we resolved interaction and technical constraints and delivered the MVP on time.</p>
+            <p>Less critical customization was moved to a later phase.</p>
           </div>
         </div>
       </section>
@@ -175,14 +187,13 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Solution</h2>
           <div class="case-section-body reveal">
-            <p>The new scheduling module became part of the existing ITSM platform.</p>
-            <p>Key improvements included:</p>
+            <p>The new planning experience became part of the existing ITSM platform.</p>
             <ul class="list-check">
-              <li>Simplified scheduling and editing flows</li>
-              <li>Removal of outdated and rarely used functionality</li>
-              <li>New customization capabilities</li>
-              <li>Improved visibility of schedules and team coverage</li>
-              <li>Consistent UX aligned with the rest of the platform</li>
+              <li>Simplified schedule creation and editing</li>
+              <li>Removed outdated or rarely used functionality</li>
+              <li>Added customization for relevant use cases</li>
+              <li>Made schedules and team coverage easier to understand</li>
+              <li>Aligned the experience with the rest of the ITSM platform</li>
             </ul>
           </div>
         </div>
@@ -224,9 +235,9 @@
             </div>
 
             <ul class="list-check" style="margin-top:2.5rem;">
-              <li>Positive user feedback highlighted improved usability</li>
-              <li>Additional teams adopted the scheduling module after launch</li>
-              <li>Improved consistency between scheduling and incident management workflows</li>
+              <li>Users gave positive feedback on the new experience.</li>
+              <li>More teams adopted the scheduling module after launch.</li>
+              <li>Planning and incident-management workflows became more consistent within the same platform.</li>
             </ul>
 
             <p class="note-caveat">Note: metrics reflect platform-level analytics rather than the scheduling module in isolation.</p>
@@ -238,7 +249,8 @@
         <div class="case-row">
           <h2 class="case-section-label reveal">Future Improvements</h2>
           <div class="case-section-body reveal">
-            <p>As the product evolved, the team header accumulated additional functionality, increasing information density. In a future iteration, I'd simplify the header to keep the schedule visible without scrolling on smaller laptop screens.</p>
+            <p>As the product evolved, more functionality was added to the team header, making it increasingly dense.</p>
+            <p>In the next iteration, I would simplify the header and make the schedule easier to access without scrolling, especially on smaller laptop screens.</p>
           </div>
         </div>
       </section>
@@ -261,7 +273,7 @@
 
 <div id="site-footer"></div>
 
-<script src="/assets/js/components.js?v=3"></script>
-<script src="/assets/js/main.js?v=7"></script>
+<script src="/assets/js/components.js?v=4"></script>
+<script src="/assets/js/main.js?v=9"></script>
 </body>
 </html>

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Запуск нового сервиса в&nbsp;мобильном приложении для&nbsp;сотрудников&nbsp;— Екатерина Шарипова</title>
+<meta name="description" content="Кейс: мобильный сценарий мониторинга сервисов в приложении для сотрудников, спроектированный в первую очередь под работу с инцидентами.">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Запуск нового сервиса в мобильном приложении для сотрудников">
+<meta property="og:description" content="Я спроектировала мобильный сценарий для мониторинга критичных сервисов во время инцидентов — сначала определив, что именно должен решать мобильный сценарий, а не просто перенеся десктопный интерфейс на меньший экран.">
+<meta property="og:image" content="/assets/img/case2-cover-desktop.jpg?v=2">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" hreflang="en" href="https://sh-catherina.github.io/product-health/">
+<link rel="alternate" hreflang="ru" href="https://sh-catherina.github.io/ru/product-health/">
+<link rel="alternate" hreflang="x-default" href="https://sh-catherina.github.io/product-health/">
+
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css?v=32">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Перейти к&nbsp;содержанию</a>
+
+<!-- Bottom-floating pill nav — fixed, same at every breakpoint -->
+<nav class="case-bottom-nav" aria-label="Навигация по разделам">
+  <ol>
+    <li><a href="#overview">Обзор</a></li>
+    <li><a href="#context">Контекст</a></li>
+    <li><a href="#problem">Проблема</a></li>
+    <li><a href="#constraints">Ограничения</a></li>
+    <li><a href="#approach">Подход</a></li>
+    <li><a href="#tradeoffs">Компромиссы</a></li>
+    <li><a href="#solution">Решение</a></li>
+    <li><a href="#outcome">Итоги</a></li>
+    <li><a href="#future">Улучшения</a></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <div class="wrap case-hero">
+    <a class="case-back" href="/ru/#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
+      Все проекты
+    </a>
+    <h1 class="case-title reveal">Запуск нового сервиса в&nbsp;мобильном приложении для&nbsp;сотрудников</h1>
+
+    <figure class="case-cover reveal">
+      <img src="/assets/img/case2-cover-desktop.jpg?v=2" alt="Сценарий мобильного дашборда Product Health: обзор отслеживаемых продуктов, доступность по сервисам и график отдельной метрики GraphQL API на трёх связанных экранах телефона." width="2160" height="900">
+    </figure>
+  </div>
+
+  <div class="wrap case-layout">
+    <div class="case-content">
+
+      <section class="case-section" id="overview">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Обзор проекта</h2>
+          <div class="case-section-body reveal">
+            <dl class="role-scope-grid">
+              <div>
+                <dt>Роль</dt>
+                <dd>Единственный дизайнер на&nbsp;проекте</dd>
+              </div>
+              <div>
+                <dt>Задача</dt>
+                <dd>Спроектировать мобильный сценарий мониторинга сервисов для&nbsp;приложения сотрудников.</dd>
+              </div>
+              <div>
+                <dt>Главный вызов</dt>
+                <dd>Дать инженерам доступ к&nbsp;критичным данным о&nbsp;состоянии сервисов во&nbsp;время инцидентов, не&nbsp;нарушая существующий десктопный сценарий.</dd>
+              </div>
+              <div>
+                <dt>Результат</dt>
+                <dd>530&nbsp;пользователей в&nbsp;первый месяц, около 13%&nbsp;от&nbsp;MAU приложения.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="context">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Контекст</h2>
+          <div class="case-section-body reveal">
+            <p>Внутренний инструмент мониторинга показывал доступность продуктов и&nbsp;состояние систем, но&nbsp;был доступен только на&nbsp;десктопе.</p>
+            <p>Во&nbsp;время инцидентов или&nbsp;вне рабочего времени инженерам требовались ноутбук и&nbsp;VPN, чтобы проверить состояние критичных сервисов.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="problem">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Проблема</h2>
+          <div class="case-section-body reveal">
+            <p>Нужно было сделать проверку состояния сервисов доступнее, когда инженеры находятся не&nbsp;за&nbsp;компьютером.</p>
+            <p>Задача была не&nbsp;в&nbsp;том, чтобы уместить десктопный интерфейс на&nbsp;маленьком экране, а&nbsp;в&nbsp;том, чтобы понять, для&nbsp;чего мониторинг действительно нужен на&nbsp;мобильном устройстве.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="constraints">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Ограничения</h2>
+          <div class="case-section-body reveal">
+            <p>Веб-версия оставалась основным источником данных, поэтому названия метрик и&nbsp;структура бэкенда не&nbsp;могли быть изменены специально для&nbsp;мобильной версии.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="approach">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Мой подход</h2>
+          <div class="case-section-body reveal">
+            <p>Вместе с&nbsp;аналитиком я&nbsp;изучила основные сценарии мониторинга и&nbsp;выделила два режима:</p>
+
+            <ul class="list-check">
+              <li><strong>Обычный мониторинг:</strong> проверка состояния сервисов в&nbsp;повседневной работе.</li>
+              <li><strong>Реакция на&nbsp;инцидент:</strong> быстро понять, ухудшилось&nbsp;ли&nbsp;состояние сервиса и&nbsp;на&nbsp;что&nbsp;нужно обратить внимание.</li>
+            </ul>
+
+            <p>Поэтому мобильный сценарий я&nbsp;в&nbsp;первую очередь проектировала под&nbsp;работу с&nbsp;инцидентами, а&nbsp;не&nbsp;как&nbsp;полную копию десктопной версии.</p>
+            <p>Я&nbsp;подготовила вайрфреймы и&nbsp;детальные прототипы и&nbsp;проверила направление со&nbsp;стейкхолдерами до&nbsp;начала разработки.</p>
+          </div>
+        </div>
+
+        <!-- single device mockup — kept centered rather than full-bleed, stretching it would distort a single phone frame -->
+        <figure class="figure figure-round-lg figure-fit-viewport reveal">
+          <img src="/assets/img/case2-main-eng.png" alt="Главный экран приложения для сотрудников с карточкой дашборда Product Health: доступность сервисов Vacation Planning, ITSM и Inventory Management System." width="1500" height="3248" loading="lazy">
+          <figcaption>Дашборд Product Health выводится прямо на&nbsp;главный экран приложения для&nbsp;сотрудников.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section" id="tradeoffs">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Ключевые компромиссы</h2>
+          <div class="case-section-body reveal">
+            <h3 class="case-subhead">Технические названия</h3>
+            <p>В&nbsp;веб-версии использовались технические названия метрик, которые не&nbsp;всегда были очевидны с&nbsp;первого взгляда.</p>
+            <p>Поскольку веб-версия оставалась источником истины, я&nbsp;сохранила те&nbsp;же&nbsp;названия на&nbsp;мобильном. Вместо переименования решила решить проблему через структуру информации:</p>
+            <ul class="list-check">
+              <li>Сначала&nbsp;— простой обзор состояния сервиса</li>
+              <li>Детальные метрики&nbsp;— уровнем ниже</li>
+            </ul>
+
+            <h3 class="case-subhead">Плотность десктопного интерфейса</h3>
+            <p>Десктопный дашборд был рассчитан на&nbsp;подробный мониторинг, тогда как&nbsp;мобильный сценарий&nbsp;— на&nbsp;быстрые проверки.</p>
+            <p>Я&nbsp;не&nbsp;стала сохранять ту&nbsp;же&nbsp;плотность информации на&nbsp;мобильном. Вместо этого сфокусировалась на&nbsp;данных, которые нужны, чтобы быстро понять состояние сервиса.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="solution">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Решение</h2>
+          <div class="case-section-body reveal">
+            <p>Мобильный сценарий позволил:</p>
+            <ul class="list-check">
+              <li>Быстро получить доступ к&nbsp;состоянию сервисов</li>
+              <li>С&nbsp;первого взгляда увидеть статус во&nbsp;время инцидента</li>
+              <li>Сохранять одинаковую интерпретацию метрик в&nbsp;вебе и&nbsp;мобильном приложении</li>
+              <li>Меньше зависеть от&nbsp;компьютера во&nbsp;время инцидентов</li>
+            </ul>
+            <p><strong>Две точки входа</strong></p>
+          </div>
+        </div>
+
+        <figure class="figure figure-full reveal">
+          <img src="/assets/img/case2-app-1.jpg" alt="Главный экран приложения для сотрудников с виджетом дашборда Product Health рядом с экраном «Сервисы», где плитка Product Health находится в группе Operations." width="1800" height="1170" loading="lazy">
+          <figcaption>В&nbsp;Product Health можно попасть двумя путями: через виджет на&nbsp;главном экране или&nbsp;через плитку Product Health в&nbsp;меню «Сервисы».</figcaption>
+        </figure>
+
+        <div class="case-row">
+          <span class="case-section-label" aria-hidden="true"></span>
+          <div class="case-section-body reveal">
+            <p><strong>Страница обзора сервисов</strong></p>
+          </div>
+        </div>
+
+        <figure class="figure figure-full reveal">
+          <img src="/assets/img/case2-app-2.jpg" alt="Обзор дашборда Product Health: пустое состояние с предложением начать мониторинг и список отслеживаемых продуктов Vacation Planning, ITSM и Inventory Management System с текущей доступностью в процентах." width="1800" height="1170" loading="lazy">
+        </figure>
+
+        <div class="case-row">
+          <span class="case-section-label" aria-hidden="true"></span>
+          <div class="case-section-body reveal">
+            <p><strong>Сценарий детализации доступности продукта</strong></p>
+          </div>
+        </div>
+
+        <figure class="figure figure-full reveal">
+          <img src="/assets/img/case2-app-3.jpg" alt="Сценарий детализации: от разбивки доступности Vacation Planning к метрикам Public, Integration и GraphQL API и до подробного SLI-графика одной метрики." width="1800" height="1170" loading="lazy">
+        </figure>
+      </section>
+
+      <section class="case-section" id="outcome">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Итоги</h2>
+          <div class="case-section-body reveal">
+            <div class="metric-row">
+              <div class="metric">
+                <p class="metric-value">530</p>
+                <p class="metric-label">пользователей в&nbsp;первый месяц</p>
+              </div>
+              <div class="metric">
+                <p class="metric-value">~13%</p>
+                <p class="metric-label">от&nbsp;MAU приложения</p>
+              </div>
+            </div>
+
+            <ul class="list-check" style="margin-top:2.5rem;">
+              <li>Мониторинг состояния сервисов стал доступен с&nbsp;мобильного устройства, а&nbsp;не&nbsp;только с&nbsp;десктопа.</li>
+              <li>Команды получили возможность проверять критичные метрики во&nbsp;время инцидентов и&nbsp;вне рабочего времени.</li>
+              <li>Мобильное приложение стало дополнительной точкой входа в&nbsp;операционный мониторинг, при&nbsp;этом существующий десктопный сценарий остался без&nbsp;изменений.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="future">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Что&nbsp;можно улучшить</h2>
+          <div class="case-section-body reveal">
+            <p>Я&nbsp;бы&nbsp;исследовала более гибкую настройку виджета на&nbsp;главном экране, чтобы пользователи могли выбирать и&nbsp;менять порядок наиболее важных для&nbsp;них сервисов.</p>
+            <p>Это было&nbsp;бы&nbsp;особенно полезно инженерам, отвечающим за&nbsp;большое количество сервисов, при&nbsp;этом основной сценарий оставался&nbsp;бы&nbsp;простым.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="wrap case-nav-footer">
+    <a href="/ru/" class="btn btn-ghost reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
+      На&nbsp;главную
+    </a>
+    <a href="/ru/on-call/" class="btn btn-primary reveal">
+      Следующий кейс
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/components.js?v=4"></script>
+<script src="/assets/js/main.js?v=9"></script>
+</body>
+</html>

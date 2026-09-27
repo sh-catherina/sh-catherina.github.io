@@ -1,4 +1,6 @@
 (function () {
+  const IS_RU = document.documentElement.lang === "ru";
+
   document.addEventListener("DOMContentLoaded", () => {
     const C = window.PortfolioComponents;
     if (C) {
@@ -10,6 +12,7 @@
     initLightbox();
     initInPageAnchors();
     initHeroScramble();
+    initLangSwitch();
   });
 
   // Hero intro: letters flicker through random glyphs, then lock into the
@@ -20,8 +23,8 @@
     if (!targets.length) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const LOWER = "abcdefghijklmnopqrstuvwxyz";
+    const UPPER = IS_RU ? "АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const LOWER = IS_RU ? "абвгдежзиклмнопрстуфхцчшэюя" : "abcdefghijklmnopqrstuvwxyz";
     const randomLetterLike = (ch) => {
       const pool = ch === ch.toUpperCase() ? UPPER : LOWER;
       return pool[(Math.random() * pool.length) | 0];
@@ -35,7 +38,7 @@
     targets.forEach((el, lineIndex) => {
       const chars = el.textContent.split("");
       const lastFlicker = new Array(chars.length).fill(-Infinity);
-      const current = chars.map((ch) => (ch === " " ? " " : randomLetterLike(ch)));
+      const current = chars.map((ch) => (/\s/.test(ch) ? ch : randomLetterLike(ch)));
       const lineDelay = lineIndex * LINE_STAGGER;
       let start = null;
 
@@ -51,7 +54,7 @@
         let doneCount = 0;
         for (let i = 0; i < chars.length; i++) {
           const target = chars[i];
-          if (target === " ") {
+          if (/\s/.test(target)) {
             doneCount++;
             continue;
           }
@@ -158,6 +161,18 @@
     items.forEach((el) => observer.observe(el));
   }
 
+  // EN / RU switch on the homepage: remember an explicit pick so a later
+  // visit to "/" goes straight to /ru/ (see the inline script in index.html).
+  function initLangSwitch() {
+    document.querySelectorAll("[data-lang]").forEach((a) => {
+      a.addEventListener("click", () => {
+        try {
+          localStorage.setItem("lang", a.dataset.lang);
+        } catch (e) {}
+      });
+    });
+  }
+
   function initLightbox() {
     const images = document.querySelectorAll(".case-cover img, .case-content figure img");
     if (!images.length) return;
@@ -166,9 +181,9 @@
     overlay.className = "lightbox-overlay";
     overlay.setAttribute("role", "dialog");
     overlay.setAttribute("aria-modal", "true");
-    overlay.setAttribute("aria-label", "Image preview");
+    overlay.setAttribute("aria-label", IS_RU ? "Просмотр изображения" : "Image preview");
     overlay.innerHTML =
-      '<button type="button" class="lightbox-close" aria-label="Close">' +
+      '<button type="button" class="lightbox-close" aria-label="' + (IS_RU ? "Закрыть" : "Close") + '">' +
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>' +
       "</button>" +
       '<img class="lightbox-img" alt="">';
@@ -197,7 +212,9 @@
       img.setAttribute("tabindex", "0");
       img.setAttribute("role", "button");
       if (!img.hasAttribute("aria-label")) {
-        img.setAttribute("aria-label", "Expand image: " + (img.alt || "image"));
+        img.setAttribute("aria-label", IS_RU
+          ? "Увеличить изображение: " + (img.alt || "изображение")
+          : "Expand image: " + (img.alt || "image"));
       }
       img.addEventListener("click", () => open(img));
       img.addEventListener("keydown", (e) => {

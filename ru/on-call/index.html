@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как&nbsp;упростить планирование дежурств в&nbsp;ITSM-системе&nbsp;— Екатерина Шарипова</title>
+<meta name="description" content="Кейс: переработка планирования дежурств и его интеграция в корпоративную ITSM-платформу — 11 часовых поясов и несколько ролей поддержки.">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Как упростить планирование дежурств в ITSM-системе">
+<meta property="og:description" content="Исследование показало, что команды уже привыкли к существующей модели планирования. Вместо того чтобы заменять её новым паттерном, я выяснила, что действительно стоит изменить, и упростила сценарий вокруг уже знакомой модели.">
+<meta property="og:image" content="/assets/img/case1-cover-desktop.jpg?v=2">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" hreflang="en" href="https://sh-catherina.github.io/on-call/">
+<link rel="alternate" hreflang="ru" href="https://sh-catherina.github.io/ru/on-call/">
+<link rel="alternate" hreflang="x-default" href="https://sh-catherina.github.io/on-call/">
+
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css?v=32">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Перейти к&nbsp;содержанию</a>
+
+<!-- Bottom-floating pill nav — fixed, same at every breakpoint -->
+<nav class="case-bottom-nav" aria-label="Навигация по разделам">
+  <ol>
+    <li><a href="#overview">Обзор</a></li>
+    <li><a href="#context">Контекст</a></li>
+    <li><a href="#problem">Проблема</a></li>
+    <li><a href="#users">Пользователи</a></li>
+    <li><a href="#role">Роль</a></li>
+    <li><a href="#challenges">Сложности</a></li>
+    <li><a href="#decisions">Ключевые решения</a></li>
+    <li><a href="#process">Процесс</a></li>
+    <li><a href="#solution">Решение</a></li>
+    <li><a href="#outcome">Итоги</a></li>
+    <li><a href="#future">Улучшения</a></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <div class="wrap case-hero">
+    <a class="case-back" href="/ru/#work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
+      Все проекты
+    </a>
+    <h1 class="case-title reveal">Как&nbsp;упростить планирование дежурств в&nbsp;ITSM-системе</h1>
+
+    <figure class="case-cover reveal">
+      <img src="/assets/img/case1-cover-desktop.jpg?v=2" alt="Планирование дежурств в ITSM-платформе: список групп поддержки и месячный календарь покрытия со сменами сотрудников на экранах планшета и ноутбука." width="2160" height="900">
+    </figure>
+  </div>
+
+  <div class="wrap case-layout">
+    <div class="case-content">
+
+      <section class="case-section" id="overview">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Обзор проекта</h2>
+          <div class="case-section-body reveal">
+            <dl class="role-scope-grid">
+              <div>
+                <dt>Роль</dt>
+                <dd>Единственный дизайнер на&nbsp;проекте</dd>
+              </div>
+              <div>
+                <dt>Задача</dt>
+                <dd>Полностью переработать планирование дежурств и&nbsp;интегрировать его в&nbsp;корпоративную ITSM-платформу.</dd>
+              </div>
+              <div>
+                <dt>Главный вызов</dt>
+                <dd>Перенести привычный сценарий планирования в&nbsp;ITSM, не&nbsp;усложняя работу команд.</dd>
+              </div>
+              <div>
+                <dt>Результат</dt>
+                <dd>NSAT вырос с&nbsp;69%&nbsp;до&nbsp;75%, а&nbsp;MAU&nbsp;— с&nbsp;2&nbsp;987&nbsp;до&nbsp;4&nbsp;500&nbsp;после запуска.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="context">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Контекст</h2>
+          <div class="case-section-body reveal">
+            <p>Команды использовали ITSM-платформу для&nbsp;управления инцидентами, а&nbsp;планирование дежурств оставалось в&nbsp;отдельном легаси-продукте. Чтобы работать со&nbsp;связанными сценариями, сотрудникам приходилось переключаться между системами.</p>
+            <p>Задача была перенести планирование в&nbsp;ITSM, сохранив привычный пользовательский опыт и&nbsp;сделав систему проще в&nbsp;поддержке.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="problem">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Проблема</h2>
+          <div class="case-section-body reveal">
+            <p>Существующий инструмент планирования был широко распространён, но&nbsp;со&nbsp;временем оброс сложностью.</p>
+            <p>Перенос в&nbsp;ITSM давал возможность упростить сценарий, сохранив при&nbsp;этом те&nbsp;его части, которые уже хорошо работали для&nbsp;команд.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="users">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Пользователи</h2>
+          <div class="case-section-body reveal">
+            <p>Основные пользователи&nbsp;— инженеры поддержки, координаторы инцидентов и&nbsp;руководители команд поддержки.</p>
+            <p>У&nbsp;них были разные роли и&nbsp;уровни доступа: от&nbsp;создания расписаний до&nbsp;проверки покрытия и&nbsp;управления изменениями.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="role">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Моя роль</h2>
+          <div class="case-section-body reveal">
+            <p>Я&nbsp;была единственным продуктовым дизайнером на&nbsp;проекте и&nbsp;работала над&nbsp;исследованием, взаимодействиями, валидацией и&nbsp;реализацией.</p>
+            <p>Я&nbsp;отвечала за&nbsp;переработку планирования дежурств и&nbsp;его интеграцию в&nbsp;ITSM-платформу.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="challenges">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Сложности</h2>
+          <div class="case-section-body reveal">
+            <ul class="list-check">
+              <li>Перенести привычный сценарий в&nbsp;ITSM, не&nbsp;усложняя знакомые задачи.</li>
+              <li>Учесть работу команд в&nbsp;11&nbsp;часовых поясах и&nbsp;разные зоны ответственности.</li>
+              <li>Упростить интерфейс, сохранив важную функциональность и&nbsp;гибкость.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="decisions">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Ключевые решения</h2>
+          <div class="case-section-body reveal">
+            <h3 class="case-subhead">Несколько часовых поясов</h3>
+            <p>Команды работали в&nbsp;11&nbsp;часовых поясах, поэтому корректное отображение времени было критично для&nbsp;планирования.</p>
+            <p>Команда решила использовать Group Local Time как&nbsp;единый источник истины. Моя задача была сделать этот контекст понятным и&nbsp;постоянно видимым в&nbsp;интерфейсе.</p>
+
+            <h3 class="case-subhead">Бесшовная миграция</h3>
+            <p>Исследование показало, что&nbsp;команды уже привыкли к&nbsp;существующей календарной модели.</p>
+            <p>Вместо нового паттерна вроде Gantt я&nbsp;сохранила знакомую модель планирования и&nbsp;сосредоточилась на&nbsp;упрощении сценария вокруг неё.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="process">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Процесс</h2>
+          <div class="case-section-body reveal">
+            <h3 class="case-subhead">01&nbsp;— Изучить существующие сценарии</h3>
+            <p>Я&nbsp;общалась с&nbsp;командами поддержки и&nbsp;изучала, как&nbsp;они создают, ведут и&nbsp;проверяют расписания.</p>
+            <p>Это помогло найти проблемные места и&nbsp;отделить их&nbsp;от&nbsp;тех частей сценария, которые уже хорошо работали.</p>
+
+            <h3 class="case-subhead">02&nbsp;— Проверить концепции</h3>
+            <p>Я&nbsp;исследовала разные способы перенести планирование в&nbsp;ITSM и&nbsp;дорабатывала концепции вместе с&nbsp;пользователями и&nbsp;стейкхолдерами.</p>
+            <p>Направление уточнялось на&nbsp;основе обратной связи до&nbsp;запуска.</p>
+          </div>
+        </div>
+
+        <figure class="figure figure-framed reveal">
+          <img src="/assets/img/case1-group-local-time.jpg" alt="Ранняя версия расписания дежурств группы Product Reliability Support Group: над декабрьским календарём покрытия показано локальное время группы." width="2400" height="1350" loading="lazy">
+          <figcaption>Одна из&nbsp;самых ранних версий экрана расписания. До&nbsp;релиза она прошла несколько кругов обратной связи.</figcaption>
+        </figure>
+
+        <div class="case-row">
+          <span class="case-section-label" aria-hidden="true"></span>
+          <div class="case-section-body reveal">
+            <h3 class="case-subhead" style="margin-top:0;">03&nbsp;— Успеть к&nbsp;жёсткому дедлайну</h3>
+            <p>На&nbsp;исследование, дизайн, валидацию и&nbsp;разработку было около четырёх месяцев.</p>
+            <p>Я&nbsp;работала напрямую с&nbsp;бэкенд-разработчиками, параллельно с&nbsp;формированием структуры данных. Вместе мы&nbsp;решали взаимодействие и&nbsp;технические ограничения и&nbsp;успели выпустить MVP в&nbsp;срок.</p>
+            <p>Менее критичные возможности перенесли на&nbsp;следующий этап.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="solution">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Решение</h2>
+          <div class="case-section-body reveal">
+            <p>Новый сценарий планирования стал частью существующей ITSM-платформы.</p>
+            <ul class="list-check">
+              <li>Упростили создание и&nbsp;редактирование расписаний</li>
+              <li>Убрали устаревшие и&nbsp;редко используемые функции</li>
+              <li>Добавили необходимую кастомизацию</li>
+              <li>Сделали расписания и&nbsp;покрытие команд понятнее</li>
+              <li>Привели сценарий к&nbsp;общим принципам ITSM-платформы</li>
+            </ul>
+          </div>
+        </div>
+
+        <figure class="figure figure-framed reveal">
+          <img src="/assets/img/case1-group-list.jpg" alt="Список групп дежурств в ITSM-платформе: ID групп, контактная информация и сотрудники, которые сейчас на дежурстве." width="1800" height="1012" loading="lazy">
+          <figcaption>Пользователи находят и&nbsp;открывают расписание своей команды из&nbsp;единого списка групп.</figcaption>
+        </figure>
+
+        <figure class="figure figure-framed reveal">
+          <img src="/assets/img/case1-group-final.jpg" alt="Итоговый экран расписания дежурств группы Product Reliability Support Group: контакты группы, основной контакт для эскалации на сегодня, руководитель группы, фильтр активных дежурных и редактируемый календарь покрытия." width="2400" height="1500" loading="lazy">
+          <figcaption>Итоговый экран расписания: контакты группы, контакт для&nbsp;эскалации на&nbsp;сегодня и&nbsp;полный календарь покрытия в&nbsp;одном месте.</figcaption>
+        </figure>
+
+        <figure class="figure figure-framed reveal">
+          <img src="/assets/img/case1-mass-editing.gif" alt="Демонстрация упрощённого массового редактирования: обновление нескольких смен дежурств за один раз." width="1302" height="800" loading="lazy">
+          <figcaption>Упрощённое массовое редактирование: чтобы обновить покрытие на&nbsp;несколько дней, больше не&nbsp;нужно повторять одни и&nbsp;те&nbsp;же&nbsp;шаги для&nbsp;каждого дня.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section" id="outcome">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Итоги</h2>
+          <div class="case-section-body reveal">
+            <p>Команды поддержки по&nbsp;всей компании успешно перешли на&nbsp;новый интерфейс.</p>
+
+            <h3 class="case-subhead">Результаты</h3>
+            <div class="metric-row">
+              <div class="metric">
+                <p class="metric-value">+6&nbsp;п.п.</p>
+                <p class="metric-detail">69% <span class="arrow">→</span> 75%</p>
+                <p class="metric-label">NSAT</p>
+              </div>
+              <div class="metric">
+                <p class="metric-value">+51%</p>
+                <p class="metric-detail">2&nbsp;987 <span class="arrow">→</span> 4&nbsp;500</p>
+                <p class="metric-label">MAU</p>
+              </div>
+            </div>
+
+            <ul class="list-check" style="margin-top:2.5rem;">
+              <li>Пользователи положительно отзывались о&nbsp;новом интерфейсе.</li>
+              <li>После запуска к&nbsp;модулю планирования подключилось больше команд.</li>
+              <li>Сценарии планирования и&nbsp;управления инцидентами стали более согласованными внутри одной платформы.</li>
+            </ul>
+
+            <p class="note-caveat">Примечание: показатели NSAT и&nbsp;MAU относятся ко&nbsp;всей платформе, а&nbsp;не&nbsp;только к&nbsp;модулю планирования.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="future">
+        <div class="case-row">
+          <h2 class="case-section-label reveal">Что&nbsp;можно улучшить</h2>
+          <div class="case-section-body reveal">
+            <p>По&nbsp;мере развития продукта в&nbsp;шапке команды появлялось всё больше функций, и&nbsp;она становилась перегруженной.</p>
+            <p>В&nbsp;следующей итерации я&nbsp;бы&nbsp;упростила шапку и&nbsp;сделала расписание доступным без&nbsp;прокрутки, особенно на&nbsp;небольших экранах ноутбуков.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="wrap case-nav-footer">
+    <a href="/ru/" class="btn btn-ghost reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6 9 12l6 6"/></svg>
+      На&nbsp;главную
+    </a>
+    <a href="/ru/product-health/" class="btn btn-primary reveal">
+      Следующий кейс
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/components.js?v=4"></script>
+<script src="/assets/js/main.js?v=9"></script>
+</body>
+</html>
